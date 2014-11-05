@@ -1,0 +1,43 @@
+!!!
+%html
+  %head
+    %title ShortUrlApp
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+  .container
+    - unless alert
+      %p.alert= notice
+    - else
+      %p.alert= alert
+    .container-fluid
+      #encabezado.row-fluid
+        .navbar.navbar-fixed-top
+          .navbar-inner
+            .container
+              %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+                %span.icon-bar
+                %span.icon-bar
+                %span.icon-bar
+              %a.brand
+                ShortUrlApp
+              .nav-collapse
+                %ul.nav.nav-pills
+                  %li.dropdown.pull-center
+                    %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                      Opciones
+                      %strong.caret
+                    %ul.dropdown-menu
+                      %li.divider
+                      %li
+                        %a{href: "/dashboard"} Dashboard
+                      %li.divider
+                      %li
+                        = link_to t('.link', default: t("helpers.links.log_out")), destroy_user_session_path(), method: :delete
+
+  .row{align: "left"}
+    .span9= yield
+    .span3
+      %h2 Acerca de la aplicación.
+      %p{align: "justify"} Este pequeño sistema te permite registrarte e iniciar sesión en el mismo, además de generar ShortUrls de Urls normales, las cuales seran almacenadas y mostraŕán cuantas veces han sido visitadas y solo se mostrarán las que el usuario actual creo.

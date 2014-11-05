@@ -1,0 +1,6 @@
+%h4
+  Tu ShortUrl para #{@url.long_url} es:
+= link_to @url.short_url, @url.short_url, target: "_blank", class: "copy-text"
+%br/
+%br/
+= link_to "Crear otra Url", root_path

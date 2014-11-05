@@ -1,0 +1,4 @@
+%p
+  @bit_ly_urls.each do |url|
+    url.counter
+  	end
